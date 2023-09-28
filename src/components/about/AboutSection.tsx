@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import ContainerPrototype from "../prototypes/ContainerPrototype.tsx";
+import LinkPrototype from "../prototypes/LinkPrototype.tsx";
 
 const aboutTexts: { headerText: string; aboutMeText: string } = {
 	headerText: "Carl Goga's Portfolio",
@@ -25,9 +26,8 @@ const AboutMe = styled.p`
 	font-size: 15px;
 `;
 
-const GithubLink = styled.a`
+const Link = styled(LinkPrototype)`
 	margin-left: 3rem;
-	text-decoration: none;
 `;
 
 export default function About(): JSX.Element {
@@ -38,7 +38,7 @@ export default function About(): JSX.Element {
 				<AboutMe>{aboutTexts.aboutMeText}</AboutMe>
 				{/* <Technologies /> */}
 			</SubContainer>
-			<GithubLink href="#">Check out my Github</GithubLink>
+			<Link>Check out my Github</Link>
 		</Container>
 	);
 }
