@@ -2,21 +2,22 @@ import ContainerPrototype from "../prototypes/ContainerPrototype";
 import styled from "styled-components";
 import LinkPrototype from "../prototypes/LinkPrototype.tsx";
 
+var aa=5;
+let bb=8;
+
 const Container = styled(ContainerPrototype)`
 	padding: 0.5rem;
 	border-radius: 50px;
 	justify-content: space-between;
 `;
 
-const SectionContainer = styled(ContainerPrototype)<{
-	$xAlign?: string | number;
-}>`
+const SubContainer = styled(ContainerPrototype)<{ $xAlign?: string | number }>`
 	flex-direction: column;
 	justify-content: center;
-	align-items: ${props => props.$xAlign };
+	align-items: ${props => props.$xAlign};
 	width: 49%;
 	color: white;
-`;
+`; //name SectionContainer was creating formatting/highlighting issues when component is called in return
 
 const ProjectImage = styled.img`
 	border-radius: 5px;
@@ -48,15 +49,15 @@ export default function ProjectCard(props: {
 
 	return (
 		<Container>
-			<SectionContainer>
-				<ProjectImage src={props.img} />
-			</SectionContainer>
-			<SectionContainer $xAlign={"center"}>
+			<SubContainer>
+				<ProjectImage src={props.img}  />
+			</SubContainer>
+			<SubContainer $xAlign={"center"}>
 				<ProjectTitle>{props.title}</ProjectTitle>
 				<ProjectLanguages>{displayLanguages()}</ProjectLanguages>
 				<ProjectDescription>{props.description}</ProjectDescription>
 				<Link>Visit me</Link>
-			</SectionContainer>
+			</SubContainer>
 		</Container>
 	);
 }

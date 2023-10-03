@@ -6,6 +6,7 @@ import Navigation from "./components/navigation/Navigation.tsx";
 import About from "./components/about/AboutSection.tsx";
 import ProjectCard from "./components/projects/ProjectCard.tsx";
 import placeholderImage from "./assets/pics.tsx";
+import projects from "./objects/projectsObject.tsx";
 
 /*
 TODO
@@ -30,7 +31,17 @@ const Section = styled.section<{
 
 const languagesArray: string[] = ["Typescript", "React"];
 
-function App(): JSX.Element {
+const mapArrayToComponents = (): JSX.Element[] =>
+	projects.map(obj => (
+		<ProjectCard
+			img={obj.img}
+			title={obj.title}
+			languages={obj.languages}
+			description={obj.description}
+		/>
+	));
+
+export default function App(): JSX.Element {
 	return (
 		<Container>
 			<Navigation />
@@ -41,15 +52,8 @@ function App(): JSX.Element {
 				$margin="2rem 0 0 "
 				$padding="0.5rem"
 			>
-				<ProjectCard
-					img={placeholderImage}
-					title="Project Title"
-					languages={languagesArray}
-					description="A great project"
-				/>
+				{mapArrayToComponents()}
 			</Section>
 		</Container>
 	);
 }
-
-export default App;
