@@ -1,23 +1,37 @@
 import React from "react";
 import ContainerPrototype from "./components/prototypes/ContainerPrototype.tsx";
 import styled from "styled-components";
-import { JsxElement } from "typescript";
 import Navigation from "./components/navigation/Navigation.tsx";
 import About from "./components/about/AboutSection.tsx";
 import ProjectCard from "./components/projects/ProjectCard.tsx";
-import placeholderImage from "./assets/pics.tsx";
 import projects from "./objects/projectsObject.tsx";
 
 /*
 TODO
- *fix formatting issue when adding props to extended styled component [PROJECTCARD]
+
  */
+
+const Wrapper = styled(ContainerPrototype)`
+	width: 100vw;
+	height: 100vh;
+	background: linear-gradient(
+			217deg,
+			rgba(255, 0, 0, 0.8),
+			rgba(255, 0, 0, 0) 70.71%
+		),
+		linear-gradient(127deg, rgba(255, 238, 0, 0.8), rgba(258, 238, 0, 0) 70.71%),
+		linear-gradient(78deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 255, 0) 70.71%),
+		linear-gradient(336deg, rgba(0, 0, 255, 0.8), rgba(0, 0, 255, 0) 70.71%),
+		linear-gradient(
+			42deg,
+			rgba(238, 255, 0, 0.932),
+			rgba(238, 255, 0, 0) 70.71%
+		);
+`;
 
 const Container = styled(ContainerPrototype)`
 	flex-direction: column;
-	width: 100vw;
-	height: 100vh;
-	background-color: black;
+	background-color: rgba(0, 0, 0, 0.8);
 `;
 
 const Section = styled.section<{
@@ -43,17 +57,19 @@ const mapArrayToComponents = (): JSX.Element[] =>
 
 export default function App(): JSX.Element {
 	return (
-		<Container>
-			<Navigation />
-			<Section>
-				<About />
-			</Section>
-			<Section
-				$margin="2rem 0 0 "
-				$padding="0.5rem"
-			>
-				{mapArrayToComponents()}
-			</Section>
-		</Container>
+		<Wrapper>
+			<Container>
+				<Navigation />
+				<Section>
+					<About />
+				</Section>
+				<Section
+					$margin="2rem 0 0 "
+					$padding="0.5rem"
+				>
+					{mapArrayToComponents()}
+				</Section>
+			</Container>
+		</Wrapper>
 	);
 }

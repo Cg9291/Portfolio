@@ -2,37 +2,49 @@ import ContainerPrototype from "../prototypes/ContainerPrototype";
 import styled from "styled-components";
 import LinkPrototype from "../prototypes/LinkPrototype.tsx";
 
-var aa=5;
-let bb=8;
-
 const Container = styled(ContainerPrototype)`
 	padding: 0.5rem;
-	border-radius: 50px;
+	border-radius: 9px;
 	justify-content: space-between;
+	height: max-content;
+	&:hover {
+		background-color: rgba(255, 255, 255, 0.1);
+	}
 `;
 
-const SubContainer = styled(ContainerPrototype)<{ $xAlign?: string | number }>`
+const SubContainer = styled(ContainerPrototype)<{ $padding?: string | number }>`
 	flex-direction: column;
 	justify-content: center;
-	align-items: ${props => props.$xAlign};
-	width: 49%;
+	padding: ${props => props.$padding};
+	width: 50%;
 	color: white;
 `; //name SectionContainer was creating formatting/highlighting issues when component is called in return
 
 const ProjectImage = styled.img`
 	border-radius: 5px;
+	height: 50%;
+	min-width: 100%;
 `;
 
-const ProjectTitle = styled.h3``;
+const ProjectTitle = styled.h5`
+	max-width: 100%;
+`;
 const ProjectLanguages = styled.div`
 	font-size: 0.65em;
+	max-width: 100%;
+	margin-bottom: 0.3rem;
+	color: grey;
 `;
 
 const ProjectDescription = styled.p`
-	font-size: 0.8em;
+	font-size: 0.6em;
+	max-width: 100%;
+	margin-bottom: 0.3rem;
 `;
 
-const Link = styled(LinkPrototype)``;
+const Link = styled(LinkPrototype)`
+	font-size: 0.5em;
+`;
 
 export default function ProjectCard(props: {
 	img: string;
@@ -44,19 +56,19 @@ export default function ProjectCard(props: {
 		props.languages.map((language: string) =>
 			props.languages.indexOf(language) === props.languages.length - 1
 				? language
-				: `${language},`,
+				: `${language}, `,
 		);
 
 	return (
 		<Container>
 			<SubContainer>
-				<ProjectImage src={props.img}  />
+				<ProjectImage src={props.img} />
 			</SubContainer>
-			<SubContainer $xAlign={"center"}>
+			<SubContainer $padding={"0 0 0 1rem"}>
 				<ProjectTitle>{props.title}</ProjectTitle>
 				<ProjectLanguages>{displayLanguages()}</ProjectLanguages>
 				<ProjectDescription>{props.description}</ProjectDescription>
-				<Link>Visit me</Link>
+				<Link>Explore</Link>
 			</SubContainer>
 		</Container>
 	);

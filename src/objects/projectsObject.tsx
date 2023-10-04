@@ -7,16 +7,16 @@ const projects: {
 	description: string;
 }[] = [
 	{
-		title: "test",
+		title: "Twitter Clone",
 		img: placeholderImage,
-		languages: ["language1", "language2"],
-		description: "test description",
+		languages: ["React", "Sass"],
+		description: "A beautiful clone of X,formerly knowned as Twitter",
 	},
 	{
-		title: "test",
+		title: "Pokedex",
 		img: placeholderImage,
-		languages: ["language1", "language2"],
-		description: "test description",
+		languages: ["Typescript", "React", "Axios"],
+		description: "For the nerds",
 	},
 ];
 
