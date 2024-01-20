@@ -1,17 +1,6 @@
 import styled from "styled-components";
 import ContainerPrototype from "../prototypes/ContainerPrototype.tsx";
 
-const Container = styled(ContainerPrototype)`
-	margin: 1rem 1rem;
-`;
-
-const ListText = styled.div`
-	color: white;
-	font-size: 1rem;
-`;
-
-const SelectionIndicator = styled.div``;
-
 export default function NavListItem(props: { text: string }): JSX.Element {
 	return (
 		<Container>
@@ -20,3 +9,16 @@ export default function NavListItem(props: { text: string }): JSX.Element {
 		</Container>
 	);
 }
+
+const Container = styled(ContainerPrototype)`
+	margin: 0 1rem;
+	padding: 1rem 0;
+`;
+
+const ListText = styled.div`
+	color: white;
+	font-size: 1rem;
+	max-height: fit-content;
+`;
+
+const SelectionIndicator = styled.div``;

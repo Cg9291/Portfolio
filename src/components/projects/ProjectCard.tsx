@@ -1,4 +1,4 @@
-import ContainerPrototype from "../prototypes/ContainerPrototype";
+import ContainerPrototype from "../prototypes/ContainerPrototype.tsx";
 import styled from "styled-components";
 import LinkPrototype from "../prototypes/LinkPrototype.tsx";
 
