@@ -8,6 +8,7 @@ import GlobalStyle from "./components/styles/GlobalStyles.tsx";
 const root = ReactDOM.createRoot(
 	document.getElementById("root") as HTMLElement,
 );
+
 root.render(
 	<React.StrictMode>
 		<GlobalStyle />

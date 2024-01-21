@@ -5,15 +5,54 @@ import Navigation from "./components/navigation/Navigation.tsx";
 import About from "./components/about/AboutSection.tsx";
 import ProjectCard from "./components/projects/ProjectCard.tsx";
 import projects from "./objects/projectsObject.tsx";
+import LandingArea from "./components/landing-area/landingArea.tsx";
 
 /*
 TODO
 
  */
 
+export default function App(): JSX.Element {
+	const languagesArray: string[] = ["Typescript", "React"];
+
+	const mapArrayToComponents = (): React.ReactElement[] =>
+		projects.map(obj => (
+			<ProjectCard
+				img={obj.img}
+				title={obj.title}
+				languages={obj.languages}
+				description={obj.description}
+			/>
+		));
+
+	return (
+		<Wrapper>
+			<Navigation />
+			<Container>
+				<LandingArea />
+				<Section>
+					<About />
+				</Section>
+				<Section
+					$margin="2rem 0 0 "
+					$padding="0.5rem"
+					$flexBasis="1"
+					$scrollable={true}
+				>
+					{mapArrayToComponents()}
+				</Section>
+			</Container>
+		</Wrapper>
+	);
+}
+
 const Wrapper = styled(ContainerPrototype)`
+	max-height: 100vh;
+	max-width: 100vw;
 	width: 100vw;
 	height: 100vh;
+	overflow: hidden;
+	//overflow-y: scroll;
 	background: linear-gradient(
 			217deg,
 			rgba(255, 0, 0, 0.8),
@@ -32,44 +71,24 @@ const Wrapper = styled(ContainerPrototype)`
 const Container = styled(ContainerPrototype)`
 	flex-direction: column;
 	background-color: rgba(0, 0, 0, 0.8);
+	//height: max-content;
+	min-height: 100vh;
+	overflow-y: scroll;
 `;
 
 const Section = styled.section<{
 	$margin?: string | number;
 	$padding?: string | number;
+	$flexBasis?: string;
+	$scrollable?: boolean;
 }>`
+	box-sizing: border-box;
 	margin: ${props => props.$margin || 0};
 	padding: ${props => props.$padding || 0};
-	height: fit-content;
+	flex: ${props => (props.$flexBasis ? "1 0 1" : "0 0 fit-content")};
+
+	max-height: max-content;
+	min-height: fit-content;
+	overflow-y: ${props => (props.$scrollable ? "scroll" : "hidden")};
+	overflow-x: hidden;
 `;
-
-const languagesArray: string[] = ["Typescript", "React"];
-
-const mapArrayToComponents = (): JSX.Element[] =>
-	projects.map(obj => (
-		<ProjectCard
-			img={obj.img}
-			title={obj.title}
-			languages={obj.languages}
-			description={obj.description}
-		/>
-	));
-
-export default function App(): JSX.Element {
-	return (
-		<Wrapper>
-			<Container>
-				<Navigation />
-				<Section>
-					<About />
-				</Section>
-				<Section
-					$margin="2rem 0 0 "
-					$padding="0.5rem"
-				>
-					{mapArrayToComponents()}
-				</Section>
-			</Container>
-		</Wrapper>
-	);
-}

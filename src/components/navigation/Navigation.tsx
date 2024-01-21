@@ -4,7 +4,7 @@ import ContainerPrototype from "../prototypes/ContainerPrototype.tsx";
 import NavListItem from "./NavListItem.tsx";
 
 export default function Navigation(): React.ReactElement {
-	const navHeaders: string[] = ["About", "Work", "Contact"];
+	const navHeaders: string[] = ["About", "Projects", "Contact"];
 	const displayListItems = (): JSX.Element[] =>
 		navHeaders.map((headerText: string) => <NavListItem text={headerText} />);
 
@@ -16,10 +16,12 @@ export default function Navigation(): React.ReactElement {
 }
 
 const Container = styled(ContainerPrototype)`
+	position: fixed;
 	height: 4rem;
 	justify-content: center;
 	background-color: rgba(255, 255, 255, 0.04);
-	//border-bottom: 1px solid grey;
+	margin-bottom: 2rem;
+	min-width: 100%;
 `;
 
 const NavList = styled.ul`

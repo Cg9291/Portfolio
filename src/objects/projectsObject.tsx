@@ -18,6 +18,54 @@ const projects: {
 		languages: ["Typescript", "React", "Axios"],
 		description: "For the nerds",
 	},
+	{
+		title: "Pokedex",
+		img: placeholderImage,
+		languages: ["Typescript", "React", "Axios"],
+		description: "For the nerds",
+	},
+	{
+		title: "Pokedex",
+		img: placeholderImage,
+		languages: ["Typescript", "React", "Axios"],
+		description: "For the nerds",
+	},
+	{
+		title: "Pokedex",
+		img: placeholderImage,
+		languages: ["Typescript", "React", "Axios"],
+		description: "For the nerds",
+	},
+	{
+		title: "Pokedex",
+		img: placeholderImage,
+		languages: ["Typescript", "React", "Axios"],
+		description: "For the nerds",
+	},
+	{
+		title: "Pokedex",
+		img: placeholderImage,
+		languages: ["Typescript", "React", "Axios"],
+		description: "For the nerds",
+	},
+	{
+		title: "Pokedex",
+		img: placeholderImage,
+		languages: ["Typescript", "React", "Axios"],
+		description: "For the nerds",
+	},
+	{
+		title: "Pokedex",
+		img: placeholderImage,
+		languages: ["Typescript", "React", "Axios"],
+		description: "For the nerds",
+	},
+	{
+		title: "Pokedex",
+		img: placeholderImage,
+		languages: ["Typescript", "React", "Axios"],
+		description: "For the nerds",
+	},
 ];
 
 export default projects;
