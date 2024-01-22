@@ -1,12 +1,43 @@
+import React from "react";
+import styled from "styled-components/macro";
 import ContainerPrototype from "../prototypes/ContainerPrototype.tsx";
-import styled from "styled-components";
 import LinkPrototype from "../prototypes/LinkPrototype.tsx";
+
+export default function ProjectCard(props: {
+	img: string;
+	title: string;
+	languages: string[];
+	description: string;
+}): React.ReactElement {
+	const displayLanguages = (): string[] =>
+		props.languages.map((language: string) =>
+			props.languages.indexOf(language) === props.languages.length - 1
+				? language
+				: `${language}, `,
+		);
+
+	return (
+		<Container>
+			<SubContainer>
+				<ProjectImage src={props.img} />
+			</SubContainer>
+			<SubContainer $padding={"0 0 0 1rem"}>
+				<ProjectTitle>{props.title}</ProjectTitle>
+				<ProjectLanguages>{displayLanguages()}</ProjectLanguages>
+				<ProjectDescription>{props.description}</ProjectDescription>
+				<Link>Explore</Link>
+			</SubContainer>
+		</Container>
+	);
+}
 
 const Container = styled(ContainerPrototype)`
 	padding: 0.5rem;
 	border-radius: 9px;
 	justify-content: space-between;
+	min-height:fit-content;
 	height: max-content;
+	margin: 0 2rem;
 	&:hover {
 		background-color: rgba(255, 255, 255, 0.1);
 	}
@@ -45,31 +76,3 @@ const ProjectDescription = styled.p`
 const Link = styled(LinkPrototype)`
 	font-size: 0.5em;
 `;
-
-export default function ProjectCard(props: {
-	img: string;
-	title: string;
-	languages: string[];
-	description: string;
-}): JSX.Element {
-	const displayLanguages = (): string[] =>
-		props.languages.map((language: string) =>
-			props.languages.indexOf(language) === props.languages.length - 1
-				? language
-				: `${language}, `,
-		);
-
-	return (
-		<Container>
-			<SubContainer>
-				<ProjectImage src={props.img} />
-			</SubContainer>
-			<SubContainer $padding={"0 0 0 1rem"}>
-				<ProjectTitle>{props.title}</ProjectTitle>
-				<ProjectLanguages>{displayLanguages()}</ProjectLanguages>
-				<ProjectDescription>{props.description}</ProjectDescription>
-				<Link>Explore</Link>
-			</SubContainer>
-		</Container>
-	);
-}

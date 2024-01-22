@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import ContainerPrototype from "../prototypes/ContainerPrototype";
 
 export default function LandingArea(): React.ReactElement {
@@ -13,7 +13,6 @@ export default function LandingArea(): React.ReactElement {
 
 const Container = styled(ContainerPrototype)`
 	flex-direction: column;
-	max-width: 100vw;
 	max-height: 100vh;
 	min-height: 100vh;
 	border: 1px solid yellow;

@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import ContainerPrototype from "../prototypes/ContainerPrototype.tsx";
 import NavListItem from "./NavListItem.tsx";
 
@@ -22,6 +22,7 @@ const Container = styled(ContainerPrototype)`
 	background-color: rgba(255, 255, 255, 0.04);
 	margin-bottom: 2rem;
 	min-width: 100%;
+	z-index:1;
 `;
 
 const NavList = styled.ul`
