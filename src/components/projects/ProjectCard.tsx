@@ -4,6 +4,7 @@ import ContainerPrototype from "../prototypes/ContainerPrototype.tsx";
 import LinkPrototype from "../prototypes/LinkPrototype.tsx";
 
 export default function ProjectCard(props: {
+	id: string;
 	img: string;
 	title: string;
 	languages: string[];
@@ -35,7 +36,7 @@ const Container = styled(ContainerPrototype)`
 	padding: 0.5rem;
 	border-radius: 9px;
 	justify-content: space-between;
-	min-height:fit-content;
+	min-height: fit-content;
 	height: max-content;
 	margin: 0 2rem;
 	&:hover {

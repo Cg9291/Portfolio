@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import styled from "styled-components/macro";
 import ContainerPrototype from "./components/prototypes/ContainerPrototype.tsx";
 import Navigation from "./components/navigation/Navigation.tsx";
@@ -8,6 +8,7 @@ import projects from "./objects/projectsObject.tsx";
 import LandingArea from "./components/landing-area/LandingArea.tsx";
 import Footer from "./footer/Footer";
 import ContactMe from "./components/contact-me-area/ContactMe";
+import { ProjectsNavigationButton } from "./components/projects/ProjectsNavButton";
 
 /*
 TODO
@@ -15,11 +16,14 @@ TODO
  */
 
 export default function App(): React.ReactElement {
+	const nodesRef: React.MutableRefObject<Map<string, React.ReactNode> | null> =
+		useRef(null);
 	const languagesArray: string[] = ["Typescript", "React"];
 
-	const mapArrayToComponents = (): React.ReactElement[] =>
+	const mapProjectsToComponents = (): React.ReactElement[] =>
 		projects.map(obj => (
 			<ProjectCard
+				id={obj.id}
 				img={obj.img}
 				title={obj.title}
 				languages={obj.languages}
@@ -27,25 +31,23 @@ export default function App(): React.ReactElement {
 			/>
 		));
 
+	const mapProjectIdToNavButton = (): React.ReactElement[] =>
+		projects.map(project => (
+			<ProjectsNavigationButton
+				id={project.id}
+				ref={nodesRef}
+			/>
+		));
+
 	return (
 		<Wrapper>
 			<Navigation />
 			<Container>
-				<LandingArea />
-				<MainAreaContainer>
-					<Section>
-						<About />
-					</Section>
-					<Section
-						$margin="2rem "
-						$padding="0.5rem 1rem"
-						$flexBasis="1"
-						$scrollable={true}
-						$border={true}
-					>
-						{mapArrayToComponents()}
-					</Section>
-				</MainAreaContainer>
+				<LandingArea></LandingArea>
+				<ProjectsArea>
+					<ProjectsGallery>{mapProjectsToComponents()}</ProjectsGallery>
+					<NavButtonsContainer>{mapProjectIdToNavButton()}</NavButtonsContainer>
+				</ProjectsArea>
 				<ContactMe />
 				<Footer />
 			</Container>
@@ -81,28 +83,32 @@ const Container = styled(ContainerPrototype)`
 	//height: max-content;
 	min-height: 1fr;
 	max-height: 100%;
+	min-width: 100%;
 	overflow-y: scroll;
 `;
 
-const MainAreaContainer = styled(ContainerPrototype)`
+const ProjectsArea = styled(ContainerPrototype)`
 	flex-direction: column;
 	min-height: 100vh;
 	max-height: 100vh;
+	justify-content: center;
+	align-items: center;
+`;
+
+const ProjectsGallery = styled(ContainerPrototype)`
+	height: 30%;
+	margin: 0 1rem;
+	border-radius: 1rem;
+	background-color: white;
+	overflow-x: hidden;
+`;
+
+const NavButtonsContainer = styled(ContainerPrototype)`
+	min-width: fit-content;
+	max-width: fit-content;
+	max-height: 1.5rem;
+	min-height: fit-content;
+	box-sizing: border-box;
 `;
 
 //should just make them two different elements
-const Section = styled.section<{
-	$margin?: string | number;
-	$padding?: string | number;
-	$flexBasis?: string;
-	$scrollable?: boolean;
-	$border?: boolean;
-}>`
-	box-sizing: border-box;
-	margin: ${props => props.$margin || 0};
-	padding: ${props => props.$padding || 0};
-	flex: ${props => (props.$flexBasis ? "1 0 50vh" : "0 0 fit-content")};
-	overflow-y: ${props => (props.$scrollable ? "scroll" : "hidden")};
-	overflow-x: hidden;
-	border: ${props => (props.$border ? "1px solid black" : "none")};
-`;

@@ -7,7 +7,6 @@ export default function ContactMe(): React.ReactElement {
 }
 
 const Container = styled(ContainerPrototype)`
-	background-color: orange;
 	min-height: 100vh;
 	max-height: 100vh;
 `;

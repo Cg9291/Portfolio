@@ -1,11 +1,14 @@
 import React from "react";
 import styled from "styled-components/macro";
 import ContainerPrototype from "../prototypes/ContainerPrototype";
+import About from "../about/AboutSection";
 
 export default function LandingArea(): React.ReactElement {
 	return (
 		<Container>
-			<Body></Body>
+			<Body>
+				<About />
+			</Body>
 			<AnimatedBanner></AnimatedBanner>
 		</Container>
 	);
