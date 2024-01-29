@@ -1,44 +1,60 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import styled from "styled-components/macro";
 import ContainerPrototype from "../prototypes/ContainerPrototype.tsx";
 import LinkPrototype from "../prototypes/LinkPrototype.tsx";
+import { MapsType } from "../../App";
 
-export default function ProjectCard(props: {
+interface ProjectCardsProps {
 	id: string;
 	img: string;
 	title: string;
 	languages: string[];
 	description: string;
-}): React.ReactElement {
-	const displayLanguages = (): string[] =>
-		props.languages.map((language: string) =>
-			props.languages.indexOf(language) === props.languages.length - 1
-				? language
-				: `${language}, `,
-		);
-
-	return (
-		<Container>
-			<SubContainer>
-				<ProjectImage src={props.img} />
-			</SubContainer>
-			<SubContainer $padding={"0 0 0 1rem"}>
-				<ProjectTitle>{props.title}</ProjectTitle>
-				<ProjectLanguages>{displayLanguages()}</ProjectLanguages>
-				<ProjectDescription>{props.description}</ProjectDescription>
-				<Link>Explore</Link>
-			</SubContainer>
-		</Container>
-	);
 }
+export const ProjectCard = forwardRef(
+	(props: ProjectCardsProps, ref: React.ForwardedRef<MapsType>) => {
+		const refProxy = ref as React.MutableRefObject<MapsType>;
+
+		const displayLanguages = (): string[] =>
+			props.languages.map((language: string) =>
+				props.languages.indexOf(language) === props.languages.length - 1
+					? language
+					: `${language}, `,
+			);
+
+		return (
+			<Container
+				ref={node => {
+					node
+						? refProxy.current.set(props.id, node)
+						: refProxy.current.delete(props.id);
+				}}
+			>
+				<SubContainer>
+					<ProjectImage src={props.img} />
+				</SubContainer>
+				<SubContainer $padding={"0 0 0 1rem"}>
+					<ProjectTitle>{props.title}</ProjectTitle>
+					<ProjectLanguages>{displayLanguages()}</ProjectLanguages>
+					<ProjectDescription>{props.description}</ProjectDescription>
+					<Link>Explore</Link>
+				</SubContainer>
+			</Container>
+		);
+	},
+);
 
 const Container = styled(ContainerPrototype)`
-	padding: 0.5rem;
+	padding: 2rem;
 	border-radius: 9px;
 	justify-content: space-between;
 	min-height: fit-content;
-	height: max-content;
-	margin: 0 2rem;
+	min-height: 100%;
+	max-height: 100%;
+	min-width: 100%;
+	margin: 0;
+	//background-color: transparent;
+	//min-width: 100vw;
 	&:hover {
 		background-color: rgba(255, 255, 255, 0.1);
 	}
@@ -49,7 +65,7 @@ const SubContainer = styled(ContainerPrototype)<{ $padding?: string | number }>`
 	justify-content: center;
 	padding: ${props => props.$padding};
 	width: 50%;
-	color: white;
+	background-color: white;
 `; //name SectionContainer was creating formatting/highlighting issues when component is called in return
 
 const ProjectImage = styled.img`

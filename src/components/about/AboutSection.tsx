@@ -26,7 +26,7 @@ const Container = styled(ContainerPrototype)`
 	flex-direction: column;
 	justify-content: space-between;
 	color: white;
-	padding-top:1.5rem;
+	padding-top:4rem;
 `;
 
 const Header = styled.h1`

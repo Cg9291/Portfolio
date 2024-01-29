@@ -22,7 +22,7 @@ const Container = styled(ContainerPrototype)`
 	background-color: rgba(255, 255, 255, 0.04);
 	margin-bottom: 2rem;
 	min-width: 100%;
-	z-index:1;
+	z-index: 1;
 `;
 
 const NavList = styled.ul`
