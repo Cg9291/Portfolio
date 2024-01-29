@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import styled from "styled-components/macro";
 import ContainerPrototype from "./components/prototypes/ContainerPrototype.tsx";
 import Navigation from "./components/navigation/Navigation.tsx";
@@ -15,9 +15,17 @@ TODO
 
  */
 
+export type MapsType = Map<string, React.ReactNode>;
+
 export default function App(): React.ReactElement {
-	const nodesRef = useRef<HTMLDivElement>(null);
+	let nodesRef = useRef<MapsType>(new Map());
 	const languagesArray: string[] = ["Typescript", "React"];
+
+	useEffect(() => {
+		console.log("c", nodesRef.current);
+	}, [nodesRef]);
+
+	console.log("a", nodesRef.current);
 
 	const mapProjectsToComponents = (): React.ReactElement[] =>
 		projects.map(obj => (

@@ -1,27 +1,24 @@
-import React, { forwardRef, useRef } from "react";
+import React, { MutableRefObject, forwardRef, useRef } from "react";
 import styled from "styled-components/macro";
 import ContainerPrototype from "../prototypes/ContainerPrototype";
+import { MapsType } from "../../App";
 
 interface ProjectsNavButtonProps {
 	id: string;
 }
 
-const ProjectsNavigationButtonImpl: React.ForwardRefRenderFunction<
-	HTMLDivElement,
-	ProjectsNavButtonProps
-> = ({ id }, ref) => {
-	let myRef = useRef<HTMLDivElement | null>(null);
-
-	console.log(myRef.current);
-	return (
-		<Container>
-			<Button></Button>
-		</Container>
-	);
-};
-
 export const ProjectsNavigationButton = forwardRef(
-	ProjectsNavigationButtonImpl,
+	(props: ProjectsNavButtonProps, ref: React.ForwardedRef<MapsType>) => {
+		const myRef = ref as MutableRefObject<MapsType>;
+		myRef.current.set("mykey", "myVal");
+		console.log("b", myRef.current);
+
+		return (
+			<Container>
+				<Button></Button>
+			</Container>
+		);
+	},
 );
 
 const Container = styled(ContainerPrototype)`
