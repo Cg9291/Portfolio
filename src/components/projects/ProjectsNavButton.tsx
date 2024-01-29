@@ -1,27 +1,27 @@
-import React, { forwardRef } from "react";
+import React, { forwardRef, useRef } from "react";
 import styled from "styled-components/macro";
 import ContainerPrototype from "../prototypes/ContainerPrototype";
 
+interface ProjectsNavButtonProps {
+	id: string;
+}
+
+const ProjectsNavigationButtonImpl: React.ForwardRefRenderFunction<
+	HTMLDivElement,
+	ProjectsNavButtonProps
+> = ({ id }, ref) => {
+	let myRef = useRef<HTMLDivElement | null>(null);
+
+	console.log(myRef.current);
+	return (
+		<Container>
+			<Button></Button>
+		</Container>
+	);
+};
+
 export const ProjectsNavigationButton = forwardRef(
-	(
-		props: {
-			id: string;
-		},
-		ref,
-	): React.ReactElement => {
-		//console.log(ref ? ref.current : "nada");
-		let myRef: unknown;
-
-		if (ref != null && typeof ref !== "function") {
-			myRef = ref.current;
-		}
-
-		return (
-			<Container ref={node => (node ? myRef.set(props.id, node) : null)}>
-				<Button onClick={() => alert(myRef)}></Button>
-			</Container>
-		);
-	},
+	ProjectsNavigationButtonImpl,
 );
 
 const Container = styled(ContainerPrototype)`
@@ -33,6 +33,7 @@ const Container = styled(ContainerPrototype)`
 	background-color: blue;
 	border-radius: 50%;
 `;
+
 const Button = styled.button`
 	background-color: transparent;
 	border: none;

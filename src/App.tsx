@@ -16,8 +16,7 @@ TODO
  */
 
 export default function App(): React.ReactElement {
-	const nodesRef: React.MutableRefObject<Map<string, React.ReactNode> | null> =
-		useRef(null);
+	const nodesRef = useRef<HTMLDivElement>(null);
 	const languagesArray: string[] = ["Typescript", "React"];
 
 	const mapProjectsToComponents = (): React.ReactElement[] =>
@@ -34,6 +33,7 @@ export default function App(): React.ReactElement {
 	const mapProjectIdToNavButton = (): React.ReactElement[] =>
 		projects.map(project => (
 			<ProjectsNavigationButton
+				key={project.id}
 				id={project.id}
 				ref={nodesRef}
 			/>
