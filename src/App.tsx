@@ -76,7 +76,6 @@ const Wrapper = styled(ContainerPrototype)`
 	width: 100vw;
 	height: 100vh;
 	overflow: scroll;
-	//overflow-y: scroll;
 	background: linear-gradient(
 			217deg,
 			rgba(255, 0, 0, 0.8),
@@ -113,7 +112,7 @@ const ProjectsArea = styled(ContainerPrototype)`
 const ProjectsGallery = styled(ContainerPrototype)`
 	width: 100vw;
 	max-width: 100vw;
-	height: 30%;
+	height: 50%;
 	border-radius: 1rem;
 	overflow-x: scroll;
 	&::-webkit-scrollbar {

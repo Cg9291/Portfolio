@@ -26,8 +26,8 @@ export const projects: Projects[] = [
 		url: "",
 	},
 	{
-		id: "music",
-		title: "music-box",
+		id: "music-box",
+		title: "Music Box",
 		img: placeholderImage,
 		languages: ["React", "Sass"],
 		description: "A music Box to express yourself and unleash your creativity",

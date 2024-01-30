@@ -30,22 +30,35 @@ export const ProjectCard = forwardRef(
 						: refProxy.current.delete(props.id);
 				}}
 			>
-				<SubContainer>
-					<ProjectImage src={props.img} />
-				</SubContainer>
-				<SubContainer $padding={"0 0 0 1rem"}>
-					<ProjectTitle>{props.title}</ProjectTitle>
-					<ProjectLanguages>{displayLanguages()}</ProjectLanguages>
-					<ProjectDescription>{props.description}</ProjectDescription>
-					<Link>Explore</Link>
-				</SubContainer>
+				<Wrapper>
+					<SubContainer>
+						<ProjectImage src={props.img} />
+					</SubContainer>
+					<SubContainer $padding={"0 0 0 1rem"}>
+						<ProjectTitle>{props.title}</ProjectTitle>
+						<ProjectLanguages>{displayLanguages()}</ProjectLanguages>
+						<ProjectDescription>{props.description}</ProjectDescription>
+						<LinksWrapper>
+							<Button>
+								<SvgImg>
+									<NavImg href="https://img.icons8.com/?size=48&id=AZOZNnY73haj&format=png" />
+								</SvgImg>
+							</Button>
+							<Link>
+								<SvgImg>
+									<NavImg href="https://img.icons8.com/?size=24&id=83168&format=png" />
+								</SvgImg>
+							</Link>
+						</LinksWrapper>
+					</SubContainer>
+				</Wrapper>
 			</Container>
 		);
 	},
 );
 
 const Container = styled(ContainerPrototype)`
-	padding: 2rem;
+	padding: 1rem;
 	border-radius: 9px;
 	justify-content: space-between;
 	min-height: fit-content;
@@ -60,10 +73,17 @@ const Container = styled(ContainerPrototype)`
 	}
 `;
 
+const Wrapper = styled(ContainerPrototype)`
+	//border: solid red;
+	overflow: hidden;
+	border-radius: 12px;
+`;
+
 const SubContainer = styled(ContainerPrototype)<{ $padding?: string | number }>`
 	flex-direction: column;
-	justify-content: center;
+	justify-content: flex-start;
 	padding: ${props => props.$padding};
+	justify-content: ${props => (props.$padding ? "flex-start" : "center")};
 	width: 50%;
 	background-color: white;
 `; //name SectionContainer was creating formatting/highlighting issues when component is called in return
@@ -74,22 +94,51 @@ const ProjectImage = styled.img`
 	min-width: 100%;
 `;
 
-const ProjectTitle = styled.h5`
+const ProjectTitle = styled.h2`
 	max-width: 100%;
 `;
 const ProjectLanguages = styled.div`
-	font-size: 0.65em;
+	font-size: 0.8em;
 	max-width: 100%;
 	margin-bottom: 0.3rem;
 	color: grey;
 `;
 
 const ProjectDescription = styled.p`
-	font-size: 0.6em;
+	font-size: 0.7em;
 	max-width: 100%;
 	margin-bottom: 0.3rem;
 `;
 
+const LinksWrapper = styled(ContainerPrototype)`
+	max-height: 20%;
+	//border: 1px solid red;
+	margin-top: auto;
+`;
+
 const Link = styled(LinkPrototype)`
-	font-size: 0.5em;
+	width: 2rem;
+	height: 2rem;
+	//border: none;
+	border-radius: 50%;
+	background-color: transparent;
+	//font-size: 0.9em;
+	overflow: hidden;
+`;
+
+const Button = styled.button`
+	width: 2rem;
+	height: 2rem;
+	border-radius: 50%;
+	background-color: transparent;
+`;
+
+const SvgImg = styled.svg.attrs({ viewBox: "0 0 24 24" })`
+	min-height: 80%;
+`;
+
+const NavImg = styled.image`
+	width: 100%;
+	height: 100%;
+	aspect-ratio: 1/1;
 `;
