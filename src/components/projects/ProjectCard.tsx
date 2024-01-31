@@ -30,34 +30,33 @@ export const ProjectCard = forwardRef(
 						: refProxy.current.delete(props.id);
 				}}
 			>
-				<Wrapper>
-					<SubContainer>
-						<ProjectImage src={props.img} />
-					</SubContainer>
-					<SubContainer $padding={"0 0 0 1rem"}>
-						<ProjectTitle>{props.title}</ProjectTitle>
-						<ProjectLanguages>{displayLanguages()}</ProjectLanguages>
-						<ProjectDescription>{props.description}</ProjectDescription>
-						<LinksWrapper>
-							<Button>
-								<SvgImg>
-									<NavImg href="https://img.icons8.com/?size=48&id=AZOZNnY73haj&format=png" />
-								</SvgImg>
-							</Button>
-							<Link>
-								<SvgImg>
-									<NavImg href="https://img.icons8.com/?size=24&id=83168&format=png" />
-								</SvgImg>
-							</Link>
-						</LinksWrapper>
-					</SubContainer>
-				</Wrapper>
+				<SubContainer>
+					<ProjectImage src={props.img} />
+				</SubContainer>
+				<SubContainer $padding={"0 0 0 1rem"}>
+					<ProjectTitle>{props.title}</ProjectTitle>
+					<ProjectLanguages>{displayLanguages()}</ProjectLanguages>
+					<ProjectDescription>{props.description}</ProjectDescription>
+					<LinksWrapper>
+						<Button>
+							<SvgImg>
+								<NavImg href="https://img.icons8.com/?size=48&id=AZOZNnY73haj&format=png" />
+							</SvgImg>
+						</Button>
+						<Link>
+							<SvgImg>
+								<NavImg href="https://img.icons8.com/?size=24&id=83168&format=png" />
+							</SvgImg>
+						</Link>
+					</LinksWrapper>
+				</SubContainer>
 			</Container>
 		);
 	},
 );
 
 const Container = styled(ContainerPrototype)`
+
 	padding: 1rem;
 	border-radius: 9px;
 	justify-content: space-between;

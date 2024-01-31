@@ -19,10 +19,12 @@ const Container = styled(ContainerPrototype)`
 	position: fixed;
 	height: 4rem;
 	justify-content: center;
-	background-color: rgba(255, 255, 255, 0.04);
+	background-color: #be3144;
 	margin-bottom: 2rem;
 	min-width: 100%;
 	z-index: 1;
+	//opacity: 0.5;
+	backdrop-filter: blur(10px);
 `;
 
 const NavList = styled.ul`

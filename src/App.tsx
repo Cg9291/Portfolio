@@ -55,7 +55,7 @@ export default function App(): React.ReactElement {
 		));
 
 	return (
-		<Wrapper>
+		<Container>
 			<Navigation />
 			<Container>
 				<LandingArea></LandingArea>
@@ -66,39 +66,28 @@ export default function App(): React.ReactElement {
 				<ContactMe />
 				<Footer />
 			</Container>
-		</Wrapper>
+		</Container>
 	);
 }
 
-const Wrapper = styled(ContainerPrototype)`
+const Container = styled(ContainerPrototype)`
 	max-height: 100vh;
 	max-width: 100vw;
 	width: 100vw;
 	height: 100vh;
 	overflow: scroll;
-	background: linear-gradient(
-			217deg,
-			rgba(255, 0, 0, 0.8),
-			rgba(255, 0, 0, 0) 70.71%
-		),
-		linear-gradient(127deg, rgba(255, 238, 0, 0.8), rgba(258, 238, 0, 0) 70.71%),
-		linear-gradient(78deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 255, 0) 70.71%),
-		linear-gradient(336deg, rgba(0, 0, 255, 0.8), rgba(0, 0, 255, 0) 70.71%),
-		linear-gradient(
-			42deg,
-			rgba(238, 255, 0, 0.932),
-			rgba(238, 255, 0, 0) 70.71%
-		);
+	flex-direction: column;
+	background-color: rgb(4, 8, 58);
 `;
 
-const Container = styled(ContainerPrototype)`
+/* const Container = styled(ContainerPrototype)`
 	flex-direction: column;
 	background-color: rgba(0, 0, 0, 0.6);
 	min-height: 1fr;
 	max-height: 100%;
 	min-width: 100%;
 	overflow-y: scroll;
-`;
+`; */
 
 const ProjectsArea = styled(ContainerPrototype)`
 	flex-direction: column;
