@@ -32,12 +32,9 @@ const Container = styled(ContainerPrototype)`
 `;
 
 const Header = styled.h1`
-	//margin-left: 2rem;
-	//width: 80vw;
 	max-height: max-content;
 	color: darkgoldenrod;
-	padding-left:1rem;
-	//text-align: center;
+	padding-left: 1rem;
 `;
 
 const SubContainer = styled(ContainerPrototype)`
