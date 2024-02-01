@@ -58,7 +58,7 @@ export default function App(): React.ReactElement {
 		<Container>
 			<Navigation />
 			<Container>
-				<LandingArea></LandingArea>
+				<LandingArea />
 				<ProjectsArea>
 					<ProjectsGallery>{mapProjectsToComponents()}</ProjectsGallery>
 					<NavButtonsContainer>{mapProjectIdToNavButton()}</NavButtonsContainer>

@@ -50,10 +50,14 @@ const slideAnimation = keyframes`
 `;
 
 const AnimatedBanner = styled(ContainerPrototype)`
+	position: relative;
 	max-height: 15%;
 	padding: 4vh 0;
 	flex: 0 0 auto;
-	overflow-x: hidden;
+	overflow: hidden;
+	border-top: 1px solid grey;
+	border-bottom:1px solid grey;
+	border-image-width:1;
 
 	& div:first-child {
 		animation-name: ${slideAnimation};
@@ -65,7 +69,7 @@ const AnimatedBanner = styled(ContainerPrototype)`
 
 const TransitionOverlay = styled(ContainerPrototype)<{ $isLeftSide: boolean }>`
 	width: 30%;
-	position: fixed;
+	position: absolute;
 	${props =>
 		props.$isLeftSide
 			? css`
@@ -89,7 +93,5 @@ const TransitionOverlay = styled(ContainerPrototype)<{ $isLeftSide: boolean }>`
 						rgba(4, 8, 58, 0.8) 75%,
 						rgba(4, 8, 58, 1) 100%
 					);
-			  `}
-
-	z-index: 3;
+			  `}//z-index: 3;
 `;
