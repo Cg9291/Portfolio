@@ -16,12 +16,14 @@ export function SkillLogo(props: SkillLogoProps): React.ReactElement {
 
 const Container = styled(ContainerPrototype)`
 	max-width: 50%;
-    min-width:50%;
+	min-width: 50%;
 	max-height: 100%;
-    justify-content:center;
+	justify-content: center;
 `;
 
 const Img = styled.img`
-	max-width: 100%;
+	min-width: 50%;
+	max-width: 50%;
+	min-height: 100%;
 	max-height: 100%;
 `;
